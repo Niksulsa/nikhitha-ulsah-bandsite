@@ -1,0 +1,75 @@
+@font-face {
+  font-family: "Avenir";
+  src: url(../../assets/font/AvenirNextLTPro-Regular.woff2) format("woff2"), url(../../assets/font/AvenirNextLTPro-Demi.woff2) format("woff2"), url(../../assets/font/AvenirNextLTPro-Bold.woff2) format("woff");
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "Avenir";
+}
+
+.header {
+  background-color: #323232;
+  color: #ffffff;
+  text-align: center;
+}
+@media screen and (min-width: 780px) {
+  .header__box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0rem 1rem 0 2rem;
+  }
+}
+.header__title {
+  font-size: 0.7rem;
+}
+
+.nav__list {
+  display: flex;
+  padding: 0.3rem;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (min-width: 780px) {
+  .nav__list {
+    padding: 1rem;
+  }
+}
+.nav__item {
+  list-style: none;
+}
+@media screen and (min-width: 780px) {
+  .nav__item {
+    padding: 1rem;
+  }
+}
+.nav__link {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.hero__box {
+  background-image: url("../assets/images/hero-bio.jpg");
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  background-position: 50% 50%;
+}
+@media screen and (min-width: 320px) {
+  .hero__box {
+    width: 100%;
+    background-position: 50% 50%;
+  }
+}
+.about__image {
+  width: 100%;
+}/*# sourceMappingURL=bio.css.map */

@@ -1,0 +1,95 @@
+@use './partials/fonts' as *;
+@use './partials/variables' as *;
+@use './partials/mixins' as *;
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+*{
+    margin:0;
+    padding:0;
+  }
+
+body {
+    margin: 0;
+    font-family: 'Avenir';
+}
+
+.header{
+    background-color: #323232;
+    color:$color-footerhead;
+    text-align: center;
+
+    &__box{
+
+        @include tablet{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0rem 1rem 0 2rem;
+        }
+
+    }
+
+    &__title{
+        font-size: 0.7rem;
+    }
+}
+
+.nav{
+
+    &__list{
+        display:flex;
+        padding: 0.3rem;
+        justify-content: space-between;
+        align-items: center;
+
+        @include tablet{
+            padding:1rem;
+        }
+    }
+
+    &__item{
+       list-style: none;
+
+       @include tablet{
+        padding:1rem;
+        }
+    }
+
+    &__link{
+        text-decoration: none;
+        color:$color-footerhead;
+    }
+}
+
+.hero{
+    
+    &__box{
+        background-image: url('../assets/images/hero-bio.jpg');
+        background-size: cover;
+        width:100%;
+        height:auto;
+        background-position: 50% 50%;
+
+        @include mobile{
+            width:100%;
+            background-position: 50% 50%;
+        }
+        
+    }
+
+    &__name{
+
+    }
+}
+
+.about{
+
+    &__image{
+        width:100%;
+
+    }
+}
