@@ -37,19 +37,19 @@ body {
 @media screen and (min-width: 768px) {
   .header__box {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
+    justify-content: flex-start;
     padding: 0rem 1rem 0 2rem;
   }
 }
 .header__titlebox {
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .nav__list {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 .nav__item {
   list-style: none;
@@ -70,11 +70,15 @@ body {
 }
 .nav__link {
   text-decoration: none;
+  color: #afafaf;
+}
+.nav__link:hover {
   color: #ffffff;
 }
 
 .hero {
   width: 100%;
+  /*applying background with a opacity of 50%*/
 }
 .hero__box {
   background: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url("../assets/images/hero-bio.jpg");
@@ -103,36 +107,28 @@ body {
 }
 .hero__name {
   position: absolute;
-  bottom: 12rem;
-  left: 9rem;
   color: #ffffff;
-  font-size: 3rem;
 }
 @media screen and (min-width: 320px) {
   .hero__name {
     bottom: 5rem;
     left: 1rem;
     font-size: 1.5rem;
-    font-family: "Avenir";
     font-weight: 400;
   }
 }
 @media screen and (min-width: 768px) {
   .hero__name {
-    bottom: 10rem;
+    bottom: 13rem;
     left: 4rem;
     font-size: 3rem;
-    font-family: "Avenir";
     font-weight: 600;
   }
 }
 @media screen and (min-width: 1280px) {
   .hero__name {
-    bottom: 20.5rem;
+    bottom: 18.5rem;
     left: 4rem;
-    font-size: 3rem;
-    font-family: "Avenir";
-    font-weight: 600;
   }
 }
 
@@ -148,12 +144,12 @@ body {
   }
 }
 .about__content {
+  margin: 0 auto 0 auto;
   /*resizing the about section with increasing width*/
 }
 @media screen and (min-width: 768px) {
   .about__content {
     width: 90%;
-    margin: 0 auto 0 auto;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -212,9 +208,10 @@ body {
 }
 .about__details-- {
   padding: 0.3rem;
-  font-weight: 600;
+  font-weight: 400;
 }
 .about__box {
+  height: auto;
   /*turning the paragraph into two columns using flex and giving it equal width*/
 }
 @media screen and (min-width: 768px) {
@@ -253,10 +250,10 @@ body {
 @media screen and (min-width: 768px) {
   .gallery__box {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
   }
 }
 .gallery__images {
@@ -356,6 +353,12 @@ body {
 .footer__mainbox {
   padding: 0.3rem;
 }
+@media screen and (min-width: 320px) {
+  .footer__mainbox {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
 @media screen and (min-width: 768px) {
   .footer__mainbox {
     width: 30%;
@@ -372,6 +375,7 @@ body {
 }
 .footer__address {
   padding: 0.3rem;
+  margin: 0.5rem 0;
 }
 @media screen and (min-width: 768px) {
   .footer__address {
@@ -387,15 +391,23 @@ body {
 }
 .footer__email {
   padding: 0.3rem;
+  text-decoration: none;
+  color: #ffffff;
+  padding: 0.3rem;
 }
 @media screen and (min-width: 768px) {
   .footer__email {
     padding: 0.3rem;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 }
 .footer__bandsite {
   padding: 0.5rem;
+}
+@media screen and (min-width: 320px) {
+  .footer__bandsite {
+    margin-top: 2rem;
+  }
 }
 @media screen and (min-width: 768px) {
   .footer__bandsite {
@@ -417,5 +429,6 @@ body {
 @media screen and (min-width: 1280px) {
   .footer__copyright {
     justify-content: space-around;
+    padding: 1.5rem 0.5rem;
   }
 }/*# sourceMappingURL=bio.css.map */
