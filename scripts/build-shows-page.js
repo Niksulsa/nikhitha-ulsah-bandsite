@@ -35,19 +35,6 @@ let shows=[
         location:"San Francisco, CA"    
     }
 ]
-let ticketsButtons= document.querySelectorAll("show__button")
-function tickets(event){
-    console.log(shows[0].venue);
-    console.log(shows[0].location);   
-}
-
-showInfo.addEventListener("click", (event) => {
-    event.preventDefault();
-    tickets();
-})
-
-    
-
 for(let i=0;i<shows.length;i++){
     const showData= shows[i];
     
@@ -91,7 +78,10 @@ for(let i=0;i<shows.length;i++){
     buyTickets.innerText="BUY TICKETS";
     showBox.appendChild(buyTickets);
 
-    
+    buyTickets.addEventListener('click', (event) => {
+        event.preventDefault();
+        console.log(shows[i].venue,shows[i].location)
+    })
 
 }
 
