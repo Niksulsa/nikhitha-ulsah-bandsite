@@ -10,7 +10,7 @@
 *{
     margin:0;
     padding:0;
-  }
+}
 
 body {
     margin: 0;
@@ -19,74 +19,26 @@ body {
 
 /* */
 .header{
-    background-color: #323232;
-    color:$color-dark-background;
-    text-align: center;
-    width:100%;
-
-    &__box{
-
-        @include tablet{
-            @include display();
-            justify-content: flex-start;
-            padding: 0rem 1rem 0 2rem;
-        }
-
-    }
-
-    &__titlebox{
-        padding:$padding-large;
-    }
+    @include headermix();
 }
 
 .nav{
-
-    &__list{
-        @include display();
-        justify-content: space-between;
-    }
-
-    &__item{
-       list-style: none;
-       border-bottom: 2px solid transparent;
-
-       @include mobile{
-           padding: 0 2rem;
-       }
-
-       &:hover{
-           border-bottom: 2px solid #fff;
-
-       }
-
-       @include tablet{
-        padding: 1rem;
-        }
-    }
-
-    &__link{
-        text-decoration: none;
-        color:$secondary-color;
-
-        &:hover{
-            color:$color-dark-background;
-        }
-    }
+    @include navigation();
 }
 
 .hero{
     width:100%;
     /*applying background with a opacity of 50%*/
     &__box{
-        background:linear-gradient(
+     background:linear-gradient(
             rgba(50, 50, 50, 0.50), 
             rgba(50, 50, 50, 0.50)), url('../assets/images/hero-bio.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 100%;;
-        width:100%;
-        position: relative;
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-position: center;
+     background-size: 100%;;
+     width:100%;
+     position: relative;
 
         @include mobile{
             max-width:100%;
@@ -271,301 +223,132 @@ body {
 }
 
 .footer{
-    background-color: $primary-color;
-    color:$color-dark-background;
-    padding:$padding-large;
-    font-size: 0.7rem;
-    width:100%;
-
-    &__container{
-        padding:$padding-large;
-        width:100%;
-/*the container is made flex with four boxes which wraps with increase in screen size*/
-        @include tablet{
-            display:flex;
-            flex-wrap: wrap;
-            justify-content:space-between;
-        }
-
-        @include desktop{
-            padding:1rem 6rem;
-
-        }
-    }//container ends here//
-    &__mainbox{
-        width:100%;
-    }
-
-
-    &__heading{
-        font-weight: 400;
-
-        @include mobile{
-           margin-bottom:1.5rem;
-        }
-
-        @include tablet{
-            margin-bottom:0;
-            font-size: 2rem;
-        }
-    }
-    /*all the boxes given an order so that they 
-    wrap up and position according to their order*/
-    &__iconbox{
-        padding:$padding-small;
-        font-size: 1.3rem;
-
-        @include tablet{
-            width:50%;
-            order:1;              //order 1//
-            display: flex;
-            justify-content: flex-start;
-            align-items: baseline;
-        }
-    }
-
-    &__social{
-
-        @include tablet{
-            padding: 1rem;
-        }
-    }
-       
-
-    &__icon{
-        margin-right:1.3rem;
-    }
-
-    &__infobox{
-        font-size: 0.9rem;
-
-
-        @include tablet{
-            width:100%;
-            display: flex;
-            justify-content: flex-start;
-            order:3;        //order 3//
-        }                 
-
-    }
-
-    &__mainbox{
-        padding: $padding-small;
-
-        @include mobile{
-            margin-top:1rem;
-            margin-bottom: 1rem;
-        }
-
-        @include tablet{
-            width:30%;
-        }
-    }
-
-    &__subheading{
-        padding:$padding-small;
-        font-weight: 300;
-
-        @include tablet{
-            font-size: 0.9rem;
-        }
-    }
-    &__address{
-        padding:$padding-small;
-        margin:$padding-large 0;
-
-        @include tablet{
-            font-weight: 400;
-            font-size: 0.7rem;
-            padding: 1rem 0.3rem;
-        }
-
-        @include desktop{
-            font-size: 0.8rem; 
-        }
-    }
-    &__email{
-        padding:$padding-small;
-        text-decoration: none;
-        color:$color-dark-background;
-        padding: $padding-small;
-
-
-        @include tablet{
-            padding:$padding-small; 
-            font-size: 0.8rem;
-        }
-    }
-
-    &__bandsite{
-        padding:0.5rem;
-
-        @include mobile{
-            margin-top: 2rem;
-        }
-
-        @include tablet{
-            order:2;                 //order 2//
-            width: 20%;
-            text-align: center;
-            margin-top: 1rem;}        
-    }
-
-    &__copyright{
-        padding:$padding-large;
-
-
-        @include tablet{
-            order:4;                //order 4//
-            padding:$padding-large;
-        }
-
-        @include desktop{
-        justify-content: space-around;
-        padding:1.5rem $padding-large;
-        }
-    }
+    @include footer();
 }
 
 .form{
-
-    &__heading{
-        padding: $padding-large;
-        font-size: 1.7rem;
-        font-weight: 600;
-        color: $primary-color;
-
-        @include tablet{
-            font-size: 2rem;
-            margin-left: 3rem;
-        }
-    }
-
-    &__box{
-        display: flex;
-        justify-content: center;
-        padding: $padding-small;
-
-        @include tablet{
-            justify-content: center;
-        }
-    }
-
-    &__image{
-        width:5rem;
-        height: 5rem;
-        border-radius: 50%;
-        padding: $padding-large;
-
-
-        @include tablet{
-            width:5.5rem;
-            height: 5.5rem;
-        }
-
-        @include desktop{
-            width:6rem;
-            height: 6rem;
-            padding: 0.7rem;
-
-        }
-        
-    }
     
-
-    &__main{
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
-        width:70%;
-
+    &__heading {
+     padding: 0.5rem;
+     font-size: 1.7rem;
+     font-weight: 600;
+     color: #323232;
+    
+         @include tablet {
+          font-size: 2rem;
+          margin-left: 3rem;
+         }
+    }
+    &__box {
+     display: flex;
+     justify-content: center;
+     padding: 0.3rem;
+    
+         @include tablet{
+          justify-content: center;
+        }
+    }
+    &__image {
+     width: 5rem;
+     height: 5rem;
+     border-radius: 50%;
+     padding: 0.5rem;
+         
         @include tablet{
-            width:50%;
-            align-items: flex-end;
+         width: 5.5rem;
+         height: 5.5rem;
         }
-
         @include desktop{
-            width:40%;
-            align-items: flex-end;
+         width: 6rem;
+         height: 6rem;
+         padding: 0.7rem;
         }
     }
 
-    &__textbox{
-        display: flex;
-        flex-direction: column;
-        width:100%;
-        color:$primary-color;
-        font-weight: 600;
-
+    &__main {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     width: 70%;
+    
+        @include tablet{
+         width: 50%;
+         align-items: flex-end;
+        }
+        @include desktop{
+         width: 40%;
+         align-items: flex-end;
+        }
+    }
+    &__textbox {
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+     color: #323232;
+     font-weight: 600;
     }
 
-    &__name{
-        height:6vh;
-        background-color: $color-gallery;
-        border: 1px solid $divider-line;
-        border-radius: 2%;
-        font-family: 'Avenir';
-        padding: 1rem;
-
+    &__name {
+     height: 6vh;
+     background-color: #fafafa;
+     border: 1px solid #e1e1e1;
+     border-radius: 2%;
+     font-family: "Avenir";
+     padding: 1rem;
+     }
+    &__comment {
+     background-color: #fafafa;
+     border: 1px solid #e1e1e1;
+     border-radius: 2%;
+     font-family: "Avenir";
+     padding: 1rem;
     }
-
-    &__comment{
-        background-color: $color-gallery;
-        border: 1px solid $divider-line;
-        border-radius: 2%;
-        font-family: 'Avenir';
-        padding: 1rem;
-
-    }
-
-    &__button{
-        width:100%;
-        height:5vh;
-       margin:1rem 0;
-       background-color: $primary-color;
-       color:$color-dark-background;
-       border:none;
-       font-weight: 900;
-       border-radius:5%;
-
-       @include tablet{
-           width:30%;
-           align-items: flex-end;
-           height:5vh;
-           border-radius: 5%;
-       }
+    &__button {
+    width: 100%;
+    height: 5vh;
+    margin: 1rem 0;
+    background-color: #323232;
+    color: #ffffff;
+    border: none;
+    font-weight: 900;
+    border-radius: 5%;
+  
+        @include tablet {
+          width: 30%;
+          align-items: flex-end;
+          height: 5vh;
+          border-radius: 5%;
+         }
     }
 }
-
 .comment{
     padding: 1rem;
 
    &__list{
-       width:95%;
-       margin: 0 auto;
+     width:95%;
+     margin: 0 auto;
 
         @include tablet{
-        width:64%;}
-
-        @include desktop{
-            width:48%;
+         width:64%;
         }
-    
+
+       @include desktop{
+         width:48%;
+        }
    }
 
     &__item{
-        width:100%;
-        display: flex;
-        height:auto;
-        justify-content: space-between; 
-        border-top: 1px solid $divider-line;
-        border-bottom: 1px solid $divider-line;
+     width:100%;
+     display: flex;
+     height:auto;
+     justify-content: space-between; 
+     border-top: 1px solid $divider-line;
+     border-bottom: 1px solid $divider-line;
 
         @include tablet{
-            justify-content: flex-start;
+         justify-content: flex-start;
         }
         
-   
     }
 
     &__avatarbox{
@@ -574,43 +357,38 @@ body {
         @include tablet{
             padding: 1rem;
             
-        }
-      
+        }  
     }
 
     &__avatar{
-        background-color: $secondary-color;
-        width:4rem;
-        height: 4rem;
-        border-radius: 50%;  
-         
-
-
+     background-color: $secondary-color;
+     width:4rem;
+     height: 4rem;
+     border-radius: 50%;  
     }
 
     &__input{
-        margin:1rem 0rem;
+     margin:1rem 0rem;
     }
 
     &__box{
-        width: 75%;
-        padding: 0.3rem;
-       
+     width: 75%;
+     padding: 0.3rem;  
+     
     }
 
     &__nametime{
-        display: flex;
-        justify-content: space-between;
-
+     display: flex;
+     justify-content: space-between;
     }
 
     &__name{
-        font-weight: 600;
-        color: $primary-color;
+     font-weight: 600;
+     color: $primary-color;
     }
+
     &__date{
-        font-weight: 400;
-        color: $secondary-color;
+     font-weight: 400;
+     color: $secondary-color;
     }
-    
 }

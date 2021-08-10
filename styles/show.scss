@@ -238,10 +238,9 @@ body {
         background:linear-gradient(
             rgba(50, 50, 50, 0.50), 
             rgba(50, 50, 50, 0.50)), url('../assets/Images/hero-shows.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
+        @include hero-background();
         height: 40vh;
-        background-position: center;
+        
 
         @include tablet{
             height:80vh;

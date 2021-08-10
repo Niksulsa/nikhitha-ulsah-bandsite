@@ -23,3 +23,227 @@
   align-items: center;
 }
 
+//mixin for footer section
+
+@mixin footer{
+  background-color: $primary-color;
+  color:$color-dark-background;
+  padding:$padding-large;
+  font-size: 0.7rem;
+  width:100%;
+
+  &__container{
+    padding:$padding-large;
+    width:100%;
+/*the container is made flex with four boxes which wraps with increase in screen size*/
+    @include tablet{
+      display:flex;
+      flex-wrap: wrap;
+      justify-content:space-between;
+    }
+
+    @include desktop{
+      padding:1rem 6rem;
+    }
+  }//container ends here//
+  &__mainbox{
+    width:100%;
+  }
+  
+  &__heading{
+    font-weight: 400;
+
+    @include mobile{
+      margin-bottom:1.5rem;
+    }
+
+    @include tablet{
+      margin-bottom:0;
+      font-size: 2rem;
+    }
+  }
+    /*all the boxes given an order so that they 
+    wrap up and position according to their order*/
+  &__iconbox{
+    padding:$padding-small;
+    font-size: 1.3rem;
+
+    @include tablet{
+     width:50%;
+     order:1;              //order 1//
+     display: flex;
+     justify-content: flex-start;
+     align-items: baseline;
+    }
+  }
+
+  &__social{
+
+    @include tablet{
+      padding: 1rem;
+      }
+    }
+
+  &__icon{
+    margin-right:1.3rem;
+    }
+
+  &__infobox{
+    font-size: 0.9rem;
+
+
+    @include tablet{
+      width:100%;
+      display: flex;
+      justify-content: flex-start;
+      order:3;        //order 3//
+    }                 
+  }
+
+  &__mainbox{
+    padding: $padding-small;
+
+    @include mobile{
+      margin-top:1rem;
+      margin-bottom: 1rem;
+    }
+
+    @include tablet{
+      width:30%;
+    }
+  }
+
+  &__subheading{
+    padding:$padding-small;
+    font-weight: 300;
+
+     @include tablet{
+       font-size: 0.9rem;
+      }
+  }
+  &__address{
+    padding:$padding-small;
+    margin:$padding-large 0;
+
+      @include tablet{
+        font-weight: 400;
+        font-size: 0.7rem;
+        padding: 1rem 0.3rem;
+      }
+
+      @include desktop{
+        font-size: 0.8rem; 
+      }
+  }
+  &__email{
+    padding:$padding-small;
+    text-decoration: none;
+    color:$color-dark-background;
+    padding: $padding-small;
+
+
+      @include tablet{
+        padding:$padding-small; 
+        font-size: 0.8rem;
+        }
+  }
+
+  &__bandsite{
+     padding:0.5rem;
+
+    @include mobile{
+     margin-top: 2rem;
+    }
+
+    @include tablet{
+      order:2;                 //order 2//
+      width: 20%;
+      text-align: center;
+      margin-top: 1rem;
+     }        
+  }
+
+  &__copyright{
+    padding:$padding-large;
+
+
+    @include tablet{
+      order:4;                //order 4//
+      padding:$padding-large;
+    }
+
+    @include desktop{
+      justify-content: space-around;
+      padding:1.5rem $padding-large;
+    }
+  }
+}
+//header styling 
+@mixin headermix{
+  background-color: #323232;
+  color:$color-dark-background;
+  text-align: center;
+  width:100%;
+
+  &__box{
+
+    @include tablet{
+      @include display();
+      justify-content: flex-start;
+      padding: 0rem 1rem 0 2rem;
+    }
+
+  }
+
+  &__titlebox{
+    padding:$padding-large;
+  }
+}
+
+//navigation bar styling
+
+@mixin navigation{
+  &__list{
+    @include display();
+     justify-content: space-between;
+  }
+
+  &__item{
+     list-style: none;
+     border-bottom: 2px solid transparent;
+
+    @include mobile{
+       padding: 0 2rem;
+    }
+
+     &:hover{
+       border-bottom: 2px solid #fff;
+      }
+
+    @include tablet{
+      padding: 1rem;
+    }
+}
+
+  &__link{
+    text-decoration: none;
+    color:$secondary-color;
+
+    &:hover{
+      color:$color-dark-background;
+    }
+  }
+}
+
+//hero picture background image styling
+
+@mixin hero-background{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;;
+  width:100%;
+}
+
+
+
