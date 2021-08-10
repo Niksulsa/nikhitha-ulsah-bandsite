@@ -22,7 +22,7 @@
                          <a class="nav__link" href="#bioinfo">Biography</a>
                      </li>
                      <li class="nav__item">
-                         <a class="nav__link" href="#">Shows</a>
+                         <a class="nav__link" href="./pages/shows.html">Shows</a>
                      </li>    
                  </ul>
              </nav>
@@ -99,6 +99,27 @@
             
             </div>
         </section>
+        <section class="form">
+            <h2 class="form__heading">Join the conversation</h2>
+            <div class="form__box">
+                <div class="form__picturebox">
+                    <img class="form__image" src="./assets//Images/Mohan-muruge.jpg" />
+                 </div>
+                <form action="" method="" class="form__main" id="add-comment">
+                    <div class="form__textbox">
+                        <label for="name">Name</label>
+                        <input type="text" class="form__name" name="name" placeholder="Enter your name">
+                    </div>
+                    <div class="form__textbox">
+                        <label for="textarea">Comment</label>   
+                        <textarea name="comment" cols="45" rows="5"  class="form__comment" placeholder="Add a new comment"></textarea> 
+                    </div>
+                    <button id="submit" type="submit" class="form__button">COMMENT</button>
+                </form>
+            </div>
+        </section>
+        <section id="commentSection" class="comment">
+        </section>
     </main>
     <!--footer starts here, it is divided into 4 parts-->
     <footer class="footer">
@@ -106,9 +127,9 @@
             <div class="footer__iconbox"><!--first part with icons and heading-->
                 <h2 class="footer__heading"> Get in touch</h2>
                 <div class="footer__social">
-                    <img class="footer__icon" src="./assets/icons/SVG/Icon-instagram.svg" alt="Instagram">
-                    <img class="footer__icon" src="./assets/icons/SVG/Icon-facebook.svg" alt="Facebook">
-                    <img class="footer__icon" src="./assets/icons/SVG/Icon-twitter.svg" alt="Twitter">
+                    <a href="https://www.facebook.com/"><img class="footer__icon" src="./assets/icons/SVG/Icon-instagram.svg" alt="Instagram"></a>
+                    <a href="https://www.instagram.com/"><img class="footer__icon" src="./assets/icons/SVG/Icon-facebook.svg" alt="Facebook"></a>
+                    <a href="https://twitter.com/"><img class="footer__icon" src="./assets/icons/SVG/Icon-twitter.svg" alt="Twitter"></a>
                 </div>
             </div>
             <div class="footer__infobox"><!--second part with agents details-->
@@ -155,5 +176,7 @@
         </div>
         <!--footer container ends here-->
     </footer> 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="scripts/index-page.js"></script>
 </body>
 </html>

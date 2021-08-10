@@ -1,0 +1,519 @@
+@use './partials/variables' as *;
+@use './partials/fonts' as *;
+@use './partials/mixins' as *;
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+*{
+    margin:0;
+    padding:0;
+  }
+
+body {
+    margin: 0;
+    font-family: 'Avenir';
+}
+
+/* */
+.header{
+    background-color: #323232;
+    color:$color-dark-background;
+    text-align: center;
+    width:100%;
+
+    &__box{
+
+        @include tablet{
+            @include display();
+            justify-content: flex-start;
+            padding: 0rem 1rem 0 2rem;
+        }
+
+    }
+
+    &__titlebox{
+        padding:$padding-large;
+    }
+}
+
+.nav{
+
+    &__list{
+        @include display();
+        justify-content: space-between;
+    }
+
+    &__item{
+       list-style: none;
+       border-bottom: 2px solid transparent;
+
+       @include mobile{
+           padding: 0 2rem;
+       }
+
+       &:hover{
+           border-bottom: 2px solid #fff;
+
+       }
+
+       @include tablet{
+        padding: 1rem;
+        }
+    }
+
+    &__link{
+        text-decoration: none;
+        color:$secondary-color;
+
+        &:hover{
+            color:$color-dark-background;
+        }
+    }
+}
+
+.footer{
+    background-color: $primary-color;
+    color:$color-dark-background;
+    padding:$padding-large;
+    font-size: 0.7rem;
+    width:100%;
+
+    &__container{
+        padding:$padding-large;
+        width:100%;
+/*the container is made flex with four boxes which wraps with increase in screen size*/
+        @include tablet{
+            display:flex;
+            flex-wrap: wrap;
+            justify-content:space-between;
+        }
+
+        @include desktop{
+            padding:1rem 6rem;
+
+        }
+    }//container ends here//
+    &__mainbox{
+        width:100%;
+    }
+
+
+    &__heading{
+        font-weight: 400;
+
+        @include mobile{
+           margin-bottom:1.5rem;
+        }
+
+        @include tablet{
+            margin-bottom:0;
+            font-size: 2rem;
+        }
+    }
+    /*all the boxes given an order so that they 
+    wrap up and position according to their order*/
+    &__iconbox{
+        padding:$padding-small;
+        font-size: 1.3rem;
+
+        @include tablet{
+            width:50%;
+            order:1;              //order 1//
+            display: flex;
+            justify-content: flex-start;
+            align-items: baseline;
+        }
+    }
+
+    &__social{
+
+        @include tablet{
+            padding: 1rem;
+        }
+    }
+       
+
+    &__icon{
+        margin-right:1.3rem;
+    }
+
+    &__infobox{
+        font-size: 0.9rem;
+
+
+        @include tablet{
+            width:100%;
+            display: flex;
+            justify-content: flex-start;
+            order:3;        //order 3//
+        }                 
+
+    }
+
+    &__mainbox{
+        padding: $padding-small;
+
+        @include mobile{
+            margin-top:1rem;
+            margin-bottom: 1rem;
+        }
+
+        @include tablet{
+            width:30%;
+        }
+    }
+
+    &__subheading{
+        padding:$padding-small;
+        font-weight: 300;
+
+        @include tablet{
+            font-size: 0.9rem;
+        }
+    }
+    &__address{
+        padding:$padding-small;
+        margin:$padding-large 0;
+
+        @include tablet{
+            font-weight: 400;
+            font-size: 0.7rem;
+            padding: 1rem 0.3rem;
+        }
+
+        @include desktop{
+            font-size: 0.8rem; 
+        }
+    }
+    &__email{
+        padding:$padding-small;
+        text-decoration: none;
+        color:$color-dark-background;
+        padding: $padding-small;
+
+
+        @include tablet{
+            padding:$padding-small; 
+            font-size: 0.8rem;
+        }
+    }
+
+    &__bandsite{
+        padding:0.5rem;
+
+        @include mobile{
+            margin-top: 2rem;
+        }
+
+        @include tablet{
+            order:2;                 //order 2//
+            width: 20%;
+            text-align: center;
+            margin-top: 1rem;}        
+    }
+
+    &__copyright{
+        padding:$padding-large;
+
+
+        @include tablet{
+            order:4;                //order 4//
+            padding:$padding-large;
+        }
+
+        @include desktop{
+        justify-content: space-around;
+        padding:1.5rem $padding-large;
+        }
+    }
+}
+
+.hero{
+    position:relative;
+
+    &__box{
+        background:linear-gradient(
+            rgba(50, 50, 50, 0.50), 
+            rgba(50, 50, 50, 0.50)), url('../assets/Images/hero-shows.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 40vh;
+        background-position: center;
+
+        @include tablet{
+            height:80vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+    }
+
+    &__name{
+        color:$color-dark-background;
+        font-weight: 400;
+        font-size: 1rem;
+        padding: 1rem;
+
+
+        @include tablet{
+            font-size: 1.7rem;
+            padding: 2rem 2.7rem;
+        }
+        @include desktop{
+            font-size: 2rem;
+            padding: 5rem 1rem;
+        }
+
+    }
+
+    &__songname{
+        color:$color-dark-background;
+        font-weight: 600;
+        font-size: 2rem;
+        padding: 0 1rem;
+        width:100%;
+
+
+        @include tablet{
+            font-size: 3rem;
+            padding: 0 2.5rem;
+            margin-top:3rem;
+            width:70%;
+        }
+
+        @include desktop{
+            font-size: 4rem;
+            padding: 0 1rem;
+            width:40%;
+            
+
+        }
+
+    }
+
+    &__music{
+        width:90%;
+        height:17vh;
+        position:absolute;
+        left: 1.2rem;
+        bottom: 1rem;
+        font-size: 0.5rem;
+
+        @include tablet{
+            width: 50%;
+            bottom:6rem;
+            left:3rem;
+        }
+
+        @include desktop{
+            width:30%;
+            top:16rem;
+            left:60rem;
+            height:20vh;
+
+        }
+
+    }
+
+   
+}
+
+.show{
+    width: 100%;
+
+
+    @include tablet{
+        display: flex;
+        justify-content: flex-end;
+        padding:1rem;
+        
+    }
+
+    &__container{
+
+        @include tablet{
+            width:100%;
+            margin-right: 2rem;
+            }
+
+        @include desktop{
+            width: 70%;
+        }    
+    }
+
+    &__box{
+
+        display: flex;
+        padding: 1rem;
+        border-bottom: 2px solid $primary-color;
+
+
+        @include mobile{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        border-bottom: 2px solid $divider-line;}
+
+
+        @include tablet{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0rem;
+        border-bottom: 2px solid $divider-line;
+        width:100%;
+            
+        }
+    
+    }
+        
+
+    &__button{
+        width:95%;
+        height:5vh;
+        background-color: #323232;
+        color: #fff;
+        border:none;
+        font-weight:600;
+        border-radius: 5%;
+        margin:0.5rem;
+
+        @include tablet{
+            width: 15%;
+            border-radius: 10%;
+            height:5vh;
+
+        }
+
+
+   
+    }
+
+    &__title{
+        color:$secondary-color;
+        font-weight: 600;
+        font-size: 0.7rem;
+        padding:0 $padding-large;
+
+
+        @include tablet{
+            display: none;
+
+        }
+    }
+
+    &__venue{
+        padding: $padding-large;
+
+        @include tablet{
+            width:22%;
+        }
+    }
+
+    &__date{
+        padding: $padding-large;
+
+        @include tablet{
+            width:22%;
+            text-align: left;
+        }
+    }
+    &__location{
+        padding: $padding-large;
+
+        @include tablet{
+            width:22%;
+        }
+    }
+}
+
+.show-head{
+    display: flex;
+
+    &__subheading{
+        display: flex;
+        display: none;
+    }
+}
+
+.show-container{
+
+    @include tablet{
+        display: flex;
+        flex-direction: column;
+
+    }
+    @include desktop{
+
+    }
+
+
+    &__title{
+        font-size: 2.2rem;
+        padding: 1rem 1.5rem;
+        font-weight: 600;
+
+
+        @include tablet{
+            font-size: 2rem;
+            text-align: left;
+            padding:0;
+            margin-bottom: 2rem;
+            
+        }
+
+        @include desktop{
+            margin-bottom: 0;
+        }
+    }
+
+    &__headbox{
+
+
+        @include tablet{
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+        @include desktop{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width:80%;
+        }
+    }
+
+    &__subheading{
+        display: none;
+
+        @include tablet{
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            width: 63%;
+            padding: 0.5rem;
+            font-weight: 400;
+            font-size: 0.7rem;
+            color: $divider-line;
+
+        }
+
+        @include desktop{
+            display: flex;  
+            width: 52%;
+            padding: 0;
+            
+        }
+
+        @include mobile{
+            
+        }
+    }
+
+    
+}
