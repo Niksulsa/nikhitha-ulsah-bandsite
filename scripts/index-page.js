@@ -36,20 +36,18 @@ const posting= (event=>{
 
 formContainer.addEventListener("submit", (event) => {
     event.preventDefault();
-    generateHtml(event.target.name.value,event.target.comment.value,postDate);
+    generateHtml(event.target.name.value,event.target.comment.value);
     const clear= document.getElementById("add-comment").reset();
 
 })
 
-let postDate= new Date();
-    postDate= (postDate .getMonth()+1)+'/'+postDate .getDate()+'/'+postDate .getFullYear();
-    console.log(postDate);
 
-let commentList = document.createElement('ul');
+
+function generateHtml(name,comment,date){
+    let commentList = document.createElement('ul');
     commentList.classList.add('comment__list');
     commentSection.appendChild(commentList);
 
-function generateHtml(name,comment,date){
     let itemEl=document.createElement('li');
     itemEl.classList.add('comment__item');
     commentList.appendChild(itemEl);
@@ -75,12 +73,12 @@ function generateHtml(name,comment,date){
     userName.innerText=name;
     nameTime.appendChild(userName);
 
-    let postDate= new Date();
+    let postDate= new Date(date);
     postDate= (postDate .getMonth()+1)+'/'+postDate .getDate()+'/'+postDate .getFullYear();
     console.log(postDate);
     const timeStamp=document.createElement('span');
     timeStamp.classList.add('comment__date');
-    timeStamp.innerText=date;
+    timeStamp.innerText=postDate;
     nameTime.appendChild(timeStamp);
 
     const commentPara=document.createElement('div');
