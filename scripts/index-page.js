@@ -1,46 +1,44 @@
-const COMMENT_API_KEY='f5a82e91-3035-493b-b3d5-824fa1812f2c'
+const COMMENT_API_KEY='be427b4a-cf10-4451-9233-d90ab9be9c1d'
 const COMMENT_API_URL='https://project-1-api.herokuapp.com/comments'
 const formContainer= document.getElementById("add-comment");
 
 
- const myComments = 
- axios.get(`${COMMENT_API_URL}?api_key=${COMMENT_API_KEY}`)
-    .then(response => {
-    console.log(response.data);
-    const oldComments=response.data;
-    oldComments.forEach(article=>{
-        generateHtml(article.name,article.comment,article.timestamp);
-        })
-
+function getInfo(){
+    axios.get(`${COMMENT_API_URL}?api_key=${COMMENT_API_KEY}`)
+    .then(response=>{
+        console.log(response.data);
+        const oldComments=response.data;
+        oldComments.forEach(response=>{
+            generateHtml(response.name,response.comment,response.timestamp);
+            })
     })
-    .catch(err=>{
-        console.log(err);
-
-    })
-
-const posting= (event=>{
+} 
+getInfo();
+ 
+const posting=(event)=>{
     axios.post(`${COMMENT_API_URL}?api_key=${COMMENT_API_KEY}`,{
     name:event.name,
-    comment:event.comment,
+    comment:event.comment
 
     })
-    .then(addComments=>{
-        const commentData=addComment.data;
-
-        commentData.forEach(commentItem=>{
-            generateHtml(commentItem.name,commentItem.comment,commentItem.postDate)
+    .then(response=>{
+        getInfo(response);
         })
 
-    })
-})
+}
 
 formContainer.addEventListener("submit", (event) => {
     event.preventDefault();
-    generateHtml(event.target.name.value,event.target.comment.value);
+    generateHtml(event.target.name.value,event.target.comment.value,postDate);
     const clear= document.getElementById("add-comment").reset();
 
-})
+   posting(event);
 
+})
+let postDate = Date.now();
+postDate = new Date(postDate);
+postDate = (postDate .getMonth()+1)+'/'+postDate .getDate()+'/'+postDate .getFullYear();
+console.log(postDate);
 
 
 function generateHtml(name,comment,date){
@@ -90,6 +88,7 @@ function generateHtml(name,comment,date){
     commentVal.classList.add('comment__input');
     commentVal.innerText=comment;
     commentPara.appendChild(commentVal);
+
 
 
 }

@@ -8,8 +8,8 @@ const gettingShows=axios.get(`${SHOW_API_URL}?api_key=${SHOW_API_KEY}`)
 .then(response=>{
     console.log(response.data);
     const shows=response.data;
-    shows.forEach(article=>{
-        generateHtml(article.date,article.place,article.location);
+    shows.forEach(response=>{
+        generateHtml(response.date,response.place,response.location);
         })
 
 }).catch(err=>{
@@ -17,7 +17,12 @@ const gettingShows=axios.get(`${SHOW_API_URL}?api_key=${SHOW_API_KEY}`)
 
 })
 
-function generateHtml(date,venue,location){    
+let postDate = Date.now();
+postDate = new Date(postDate);
+postDate = (postDate .getMonth()+1)+'/'+postDate .getDate()+'/'+postDate .getFullYear();
+console.log(postDate);
+
+function generateHtml(date,place,location){    
 
     const showBox = document.createElement('div');
     showBox.classList.add('show__box');
@@ -28,9 +33,12 @@ function generateHtml(date,venue,location){
     titleDate.innerText="DATES"
     showBox.appendChild(titleDate);
 
+    let postDate= new Date(date);
+    postDate= (postDate .getMonth()+1)+'/'+postDate .getDate()+'/'+postDate .getFullYear();
+    console.log(postDate);
     const showDate= document.createElement('p');
     showDate.classList.add('show__date');
-    showDate.innerText=date;
+    showDate.innerText=postDate;
     showBox.appendChild(showDate);
 
     const titleVenue = document.createElement('h4');
@@ -40,7 +48,7 @@ function generateHtml(date,venue,location){
 
     const showVenue=document.createElement('p');
     showVenue.classList.add('show__venue');
-    showVenue.innerText=venue;
+    showVenue.innerText=place;
     showBox.appendChild(showVenue);
 
     const titleLocation = document.createElement('h4');
@@ -60,7 +68,7 @@ function generateHtml(date,venue,location){
 
     buyTickets.addEventListener('click', (event) => {
         event.preventDefault();
-        console.log(shows[i].venue,shows[i].location)
+        console.log(showVenue.innerText,showLocation.innerText,)
     })
 
 }
