@@ -1,57 +1,55 @@
-const addForm= document.getElementById('add-comment');
-const addComment=document.getElementById('commentSection')
-let commentBox=[
-    {
-        name:'Connor Walton',
-        comment:'This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.',
-        date:"12/2/2012"
+const COMMENT_API_KEY='f5a82e91-3035-493b-b3d5-824fa1812f2c'
+const COMMENT_API_URL='https://project-1-api.herokuapp.com/comments'
+const formContainer= document.getElementById("add-comment");
 
-    },
-    {
-        name:'Emilie Beach',
-        comment:'I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.',
-        date:"12/6/2010"
 
-    },
-    {
-        name:'Miles Acosta',
-        comment:'I cant stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Cant get enough.',
-        date:"12/2/2009"
+ const myComments = 
+ axios.get(`${COMMENT_API_URL}?api_key=${COMMENT_API_KEY}`)
+    .then(response => {
+    console.log(response.data);
+    const oldComments=response.data;
+    oldComments.forEach(article=>{
+        generateHtml(article.name,article.comment,article.timestamp);
+        })
 
-    }
-]; 
-console.log(commentBox);
+    })
+    .catch(err=>{
+        console.log(err);
+
+    })
+
+const posting= (event=>{
+    axios.post(`${COMMENT_API_URL}?api_key=${COMMENT_API_KEY}`,{
+    name:event.name,
+    comment:event.comment,
+
+    })
+    .then(addComments=>{
+        const commentData=addComment.data;
+
+        commentData.forEach(commentItem=>{
+            generateHtml(commentItem.name,commentItem.comment,commentItem.postDate)
+        })
+
+    })
+})
+
+formContainer.addEventListener("submit", (event) => {
+    event.preventDefault();
+    generateHtml(event.target.name.value,event.target.comment.value,postDate);
+    const clear= document.getElementById("add-comment").reset();
+
+})
+
+let postDate= new Date();
+    postDate= (postDate .getMonth()+1)+'/'+postDate .getDate()+'/'+postDate .getFullYear();
+    console.log(postDate);
 
 let commentList = document.createElement('ul');
     commentList.classList.add('comment__list');
     commentSection.appendChild(commentList);
 
-commentBox.forEach(element => {
-    generateHtml(element.name,element.comment,element.date);
-  });
-
-
-addForm.addEventListener("submit", (event) => {
-event.preventDefault();
-generateHtml(event.target.name.value,event.target.comment.value,postDate);
-   
-function displayComment(){
-    let newComment={
-    name:event.target.name.value,
-    comment:event.target.comment.value
-    };
-    commentBox.unshift(newComment);
-    console.log(newComment);
-    console.log(commentBox)}
-    displayComment();
- 
-function clearandShow(){  
-  const clear= document.getElementById("add-comment").reset();
-}
-clearandShow();
-});
-
-function generateHtml(name, comment,date){
+function generateHtml(name,comment,date){
     let itemEl=document.createElement('li');
     itemEl.classList.add('comment__item');
     commentList.appendChild(itemEl);
@@ -77,6 +75,9 @@ function generateHtml(name, comment,date){
     userName.innerText=name;
     nameTime.appendChild(userName);
 
+    let postDate= new Date();
+    postDate= (postDate .getMonth()+1)+'/'+postDate .getDate()+'/'+postDate .getFullYear();
+    console.log(postDate);
     const timeStamp=document.createElement('span');
     timeStamp.classList.add('comment__date');
     timeStamp.innerText=date;
@@ -94,29 +95,3 @@ function generateHtml(name, comment,date){
 
 
 }
-
-let postDate = Date.now();
-postDate = new Date(postDate);
-postDate = (postDate .getMonth()+1)+'/'+postDate .getDate()+'/'+postDate .getFullYear();
-
-console.log(postDate);
-
-
-
-    
-    /*let newComment = document.getElementById("commentSection");
-    newComment.innerText=commentBox.name.value + commentBox.comment.value;
-    commentBox.push(newComment);
-    return newComment;
-
-    //const nameVal = event.target.name.value;  
-    //const commentVal= event.target.comment.value;
-    //const commentData=commentBox[i].value;
-    //commentBox.push();
-
-
-    //clearAndShow();
-    //console.log(addComment);
-
-}*/
-

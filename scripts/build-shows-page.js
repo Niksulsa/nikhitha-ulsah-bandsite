@@ -1,43 +1,23 @@
+const SHOW_API_KEY="366ed076-4f44-4ac3-8a06-7c276220a3eb";
+const SHOW_API_URL="https://project-1-api.herokuapp.com/showdates"
 const showInfo=document.getElementById('show-info');
 showInfo.classList.add('show__container');
 
-let shows=[
-    {
-        date:"Mon Sept 06 2021",
-        venue:"Ronald Lane ",
-        location:"San Francisco, CA"
-    },
-    {
-        date:"Tue Sept 21 2021 ",
-        venue:"Pier 3 East ",
-        location:"San Francisco, CA"
 
-    },
+const gettingShows=axios.get(`${SHOW_API_URL}?api_key=${SHOW_API_KEY}`)
+.then(response=>{
+    console.log(response.data);
+    const shows=response.data;
+    shows.forEach(article=>{
+        generateHtml(article.date,article.place,article.location);
+        })
 
-    {
-        date:"Fri Oct 15 2021  ",
-        venue:"View Lounge  ",
-        location:"San Francisco, CA"
-    },
-    {
-        date:"Sat Nov 06 2021",
-        venue:"Hyatt Agency ",
-        location:"San Francisco, CA"
-    },
-    {
-        date:"Fri Nov 26 2021",
-        venue:"Moscow Center ",
-        location:"San Francisco, CA" 
-    },
-    {
-        date:"Wed Dec 15 2021 ",
-        venue:"Press Club ",
-        location:"San Francisco, CA"    
-    }
-]
-for(let i=0;i<shows.length;i++){
-    const showData= shows[i];
-    
+}).catch(err=>{
+    console.log(err);
+
+})
+
+function generateHtml(date,venue,location){    
 
     const showBox = document.createElement('div');
     showBox.classList.add('show__box');
@@ -50,7 +30,7 @@ for(let i=0;i<shows.length;i++){
 
     const showDate= document.createElement('p');
     showDate.classList.add('show__date');
-    showDate.innerText=showData.date;
+    showDate.innerText=date;
     showBox.appendChild(showDate);
 
     const titleVenue = document.createElement('h4');
@@ -60,7 +40,7 @@ for(let i=0;i<shows.length;i++){
 
     const showVenue=document.createElement('p');
     showVenue.classList.add('show__venue');
-    showVenue.innerText=showData.venue;
+    showVenue.innerText=venue;
     showBox.appendChild(showVenue);
 
     const titleLocation = document.createElement('h4');
@@ -70,7 +50,7 @@ for(let i=0;i<shows.length;i++){
 
     const showLocation=document.createElement('p');
     showLocation.classList.add('show__location');
-    showLocation.innerText=showData.location;
+    showLocation.innerText=location;
     showBox.appendChild(showLocation);
 
     let buyTickets=document.createElement('button');
@@ -84,5 +64,6 @@ for(let i=0;i<shows.length;i++){
     })
 
 }
+
 
     
