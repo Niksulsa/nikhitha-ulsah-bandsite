@@ -17,10 +17,14 @@ const gettingShows=axios.get(`${SHOW_API_URL}?api_key=${SHOW_API_KEY}`)
 
 })
 
-let postDate = Date.now();
-postDate = new Date(postDate);
-postDate = (postDate .getMonth()+1)+'/'+postDate .getDate()+'/'+postDate .getFullYear();
-console.log(postDate);
+const postingShows=axios.get(`${SHOW_API_URL}?api_key=${SHOW_API_KEY}`)
+.then(response=>{
+    console.log()
+})
+
+
+
+
 
 function generateHtml(date,place,location){    
 
@@ -33,7 +37,8 @@ function generateHtml(date,place,location){
     titleDate.innerText="DATES"
     showBox.appendChild(titleDate);
 
-    let postDate= new Date(date);
+    let postDate= new Date();
+    postDate= new Date(postDate.toDateString())
     postDate= (postDate .getMonth()+1)+'/'+postDate .getDate()+'/'+postDate .getFullYear();
     console.log(postDate);
     const showDate= document.createElement('p');

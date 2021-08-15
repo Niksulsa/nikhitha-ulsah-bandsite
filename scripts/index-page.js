@@ -1,7 +1,6 @@
-const COMMENT_API_KEY='be427b4a-cf10-4451-9233-d90ab9be9c1d'
+const COMMENT_API_KEY='6e0f8759-ad63-41ec-84aa-6e622c155e2a'
 const COMMENT_API_URL='https://project-1-api.herokuapp.com/comments'
 const formContainer= document.getElementById("add-comment");
-
 
 function getInfo(){
     axios.get(`${COMMENT_API_URL}?api_key=${COMMENT_API_KEY}`)
@@ -9,16 +8,20 @@ function getInfo(){
         console.log(response.data);
         const oldComments=response.data;
         oldComments.forEach(response=>{
-            generateHtml(response.name,response.comment,response.timestamp);
-            })
+            generateHtml(response.name,response.comment,response.timestamp)
+
+        })
+    }).catch(err=>{
+        console.log(err)
     })
+    
 } 
 getInfo();
  
-const posting=(event)=>{
+function posting(event){
     axios.post(`${COMMENT_API_URL}?api_key=${COMMENT_API_KEY}`,{
-    name:event.name,
-    comment:event.comment
+    'name':event.target.name.value,
+    'comment':event.target.comment.value
 
     })
     .then(response=>{
@@ -30,10 +33,9 @@ const posting=(event)=>{
 formContainer.addEventListener("submit", (event) => {
     event.preventDefault();
     generateHtml(event.target.name.value,event.target.comment.value,postDate);
-    const clear= document.getElementById("add-comment").reset();
 
    posting(event);
-
+   const clear= document.getElementById("add-comment").reset(); 
 })
 let postDate = Date.now();
 postDate = new Date(postDate);
