@@ -5,28 +5,26 @@ showInfo.classList.add('show__container');
 
 
 const gettingShows=axios.get(`${SHOW_API_URL}?api_key=${SHOW_API_KEY}`)
-.then(response=>{
-    console.log(response.data);
-    const shows=response.data;
-    shows.forEach(response=>{
+    .then(response=>{
+        console.log(response.data);
+        const shows=response.data;
+        shows.forEach(response=>{
         generateHtml(response.date,response.place,response.location);
         })
 
-}).catch(err=>{
-    console.log(err);
+    }).catch(err=>{
+        console.log(err);
 
 })
 
-const postingShows=axios.get(`${SHOW_API_URL}?api_key=${SHOW_API_KEY}`)
-.then(response=>{
-    console.log()
+const postingShows=axios.post(`${SHOW_API_URL}?api_key=${SHOW_API_KEY}`)
+    .then(response=>{
+        console.log(response);
+    
 })
 
 
-
-
-
-function generateHtml(date,place,location){    
+function generateHtml(postDate,place,location){    
 
     const showBox = document.createElement('div');
     showBox.classList.add('show__box');
@@ -37,13 +35,17 @@ function generateHtml(date,place,location){
     titleDate.innerText="DATES"
     showBox.appendChild(titleDate);
 
-    let postDate= new Date();
-    postDate= new Date(postDate.toDateString())
-    postDate= (postDate .getMonth()+1)+'/'+postDate .getDate()+'/'+postDate .getFullYear();
-    console.log(postDate);
+    //let postDate= new Date(date);
+    //postDate= new Date(postDate.toDateString())
+    //postDate= (postDate .getMonth()+1)+'/'+postDate .getDate()+'/'+postDate .getFullYear();
+    //console.log(postDate);
+    //let postDate=new Date.parseInt(date);
+    let myDate = new Date(postDate*1000);
+    console.log(myDate.toLocaleString());
     const showDate= document.createElement('p');
     showDate.classList.add('show__date');
     showDate.innerText=postDate;
+
     showBox.appendChild(showDate);
 
     const titleVenue = document.createElement('h4');

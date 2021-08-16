@@ -1,46 +1,6 @@
-const COMMENT_API_KEY='6e0f8759-ad63-41ec-84aa-6e622c155e2a'
+const COMMENT_API_KEY='19bae5af-4d3c-4333-9094-bbc989d30d89'
 const COMMENT_API_URL='https://project-1-api.herokuapp.com/comments'
 const formContainer= document.getElementById("add-comment");
-
-function getInfo(){
-    axios.get(`${COMMENT_API_URL}?api_key=${COMMENT_API_KEY}`)
-    .then(response=>{
-        console.log(response.data);
-        const oldComments=response.data;
-        oldComments.forEach(response=>{
-            generateHtml(response.name,response.comment,response.timestamp)
-
-        })
-    }).catch(err=>{
-        console.log(err)
-    })
-    
-} 
-getInfo();
- 
-function posting(event){
-    axios.post(`${COMMENT_API_URL}?api_key=${COMMENT_API_KEY}`,{
-    'name':event.target.name.value,
-    'comment':event.target.comment.value
-
-    })
-    .then(response=>{
-        getInfo(response);
-        })
-
-}
-
-formContainer.addEventListener("submit", (event) => {
-    event.preventDefault();
-    generateHtml(event.target.name.value,event.target.comment.value,postDate);
-
-   posting(event);
-   const clear= document.getElementById("add-comment").reset(); 
-})
-let postDate = Date.now();
-postDate = new Date(postDate);
-postDate = (postDate .getMonth()+1)+'/'+postDate .getDate()+'/'+postDate .getFullYear();
-console.log(postDate);
 
 
 function generateHtml(name,comment,date){
@@ -91,6 +51,52 @@ function generateHtml(name,comment,date){
     commentVal.innerText=comment;
     commentPara.appendChild(commentVal);
 
-
-
 }
+
+
+
+function getInfo(){
+    return axios.get(`${COMMENT_API_URL}?api_key=${COMMENT_API_KEY}`)
+    .then(response=>{
+        console.log(response.data);
+        const newComments=response.data.sort(function(a,b){
+            return b.timestamp-a.timestamp;
+        });
+        newComments.forEach(response=>{
+            generateHtml(response.name,response.comment,response.timestamp)
+        })
+   }).catch(err=>{
+        console.log(err)
+    })
+    
+} 
+getInfo();
+ 
+function posting(comment){
+    return axios.post(`${COMMENT_API_URL}?api_key=${COMMENT_API_KEY}`,comment)
+    .then(response=>{
+        console.log(response);   
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+}
+
+
+formContainer.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const comment={
+        name:event.target.name.value,
+        comment:event.target.comment.value
+    }
+    const commentBox=document.getElementById("commentSection")
+    commentBox.innerHTML=""
+    posting(comment).then(()=>getInfo())  
+   formContainer.reset();
+})
+
+
+let postDate = Date.now();
+postDate = new Date(postDate);
+postDate = (postDate .getMonth()+1)+'/'+postDate .getDate()+'/'+postDate .getFullYear();
+console.log(postDate);
