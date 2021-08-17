@@ -3,27 +3,6 @@ const SHOW_API_URL="https://project-1-api.herokuapp.com/showdates"
 const showInfo=document.getElementById('show-info');
 showInfo.classList.add('show__container');
 
-
-const gettingShows=axios.get(`${SHOW_API_URL}?api_key=${SHOW_API_KEY}`)
-    .then(response=>{
-        console.log(response.data);
-        const shows=response.data;
-        shows.forEach(response=>{
-        generateHtml(response.date,response.place,response.location);
-        })
-
-    }).catch(err=>{
-        console.log(err);
-
-})
-
-const postingShows=axios.post(`${SHOW_API_URL}?api_key=${SHOW_API_KEY}`)
-    .then(response=>{
-        console.log(response);
-    
-})
-
-
 function generateHtml(postDate,place,location){    
 
     const showBox = document.createElement('div');
@@ -35,17 +14,13 @@ function generateHtml(postDate,place,location){
     titleDate.innerText="DATES"
     showBox.appendChild(titleDate);
 
-    //let postDate= new Date(date);
-    //postDate= new Date(postDate.toDateString())
-    //postDate= (postDate .getMonth()+1)+'/'+postDate .getDate()+'/'+postDate .getFullYear();
-    //console.log(postDate);
-    //let postDate=new Date.parseInt(date);
-    let myDate = new Date(postDate*1000);
-    console.log(myDate.toLocaleString());
+    
+    let intDate=parseInt(postDate)
+    let myDate = new Date(intDate);
+    console.log(myDate)
     const showDate= document.createElement('p');
     showDate.classList.add('show__date');
-    showDate.innerText=postDate;
-
+    showDate.innerHTML=`${myDate.getMonth()+1}/${myDate.getDate()}/${myDate.getFullYear()}`;
     showBox.appendChild(showDate);
 
     const titleVenue = document.createElement('h4');
@@ -79,6 +54,27 @@ function generateHtml(postDate,place,location){
     })
 
 }
+const gettingShows=axios.get(`${SHOW_API_URL}?api_key=${SHOW_API_KEY}`)
+    .then(response=>{
+        console.log(response.data);
+        const shows=response.data;
+        shows.forEach(response=>{
+        generateHtml(response.date,response.place,response.location);
+        })
+
+    }).catch(err=>{
+        console.log(err);
+
+})
+
+const postingShows=axios.post(`${SHOW_API_URL}?api_key=${SHOW_API_KEY}`)
+    .then(response=>{
+        console.log(response);
+    
+})
+
+
+
 
 
     

@@ -92,7 +92,7 @@ formContainer.addEventListener("submit", (event) => {
     const commentBox=document.getElementById("commentSection")
     commentBox.innerHTML=""
     posting(comment).then(()=>getInfo())  
-   formContainer.reset();
+    formContainer.reset();
 })
 
 
